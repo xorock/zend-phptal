@@ -1,7 +1,7 @@
 # PHPTAL Integration for Zend Framework 3
 
 Provides [PHPTAL](http://phptal.org/) integration for
-[Expressive](https://github.com/zendframework/zendframework).
+[Zend Framework 3](https://github.com/zendframework/zendframework).
 
 ## Installation
 
