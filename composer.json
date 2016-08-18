@@ -1,0 +1,26 @@
+{
+    "name": "xorock/zend-phptal",
+    "description": "PHPTAL integration for Zend Framework 3",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "zf",
+        "zf3",
+        "module",
+        "phptal"
+    ],
+    "require": {
+        "php": "^5.5 || ^7.0",
+        "container-interop/container-interop": "^1.1",
+        "phptal/phptal": "^1.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.7",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "autoload": {
+      "psr-4": {
+        "ZfPhptal\\": "src/"
+      }
+    }
+} 
