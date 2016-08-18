@@ -15,8 +15,7 @@ use ZfPhptal\ModuleOptions;
 /**
  * Create and return a PHPTAL engine instance.
  *
- * Optionally uses the service 'config', which should return an array. This
- * factory consumes the following structure:
+ * This factory consumes the following structure:
  *
  * <code>
  * 'phptal' => [
@@ -36,9 +35,6 @@ use ZfPhptal\ModuleOptions;
  *     'debug' => boolean,
  * ],
  * </code>
- * 
- * By default, this factory attaches the Helper\UrlHelper and Helper\ServerUrlHelper
- * to the engine and registers helper: extension modifier.
  */
 class PhptalEngineFactory implements FactoryInterface
 {
@@ -113,42 +109,6 @@ class PhptalEngineFactory implements FactoryInterface
             $engine->setForceReparse(true);
         }
         
-//        $this->injectHelpers($engine, $container);
-        
         return $engine;
-    }
-    
-    /**
-     * Inject helpers into the PHPTAL instance.
-     * 
-     * @param PHPTAL $template
-     * @param ContainerInterface $container
-     * @throws Exception\MissingHelperException
-     */
-    private function injectHelpers(PhptalEngine $template, ContainerInterface $container)
-    {        
-        if (!$container->has(HelperManager::class)) {
-            throw new Exception\MissingHelperException(sprintf(
-                'An instance of %s is required in order to register new helper',
-                HelperManager::class
-            ));
-        }
-        
-        $helperManager = $container->get(HelperManager::class);
-        
-        $template->set('helper', $helperManager);
-        
-        if ($container->has(Helper\UrlHelper::class)) {
-            $helperManager->registerHelper($container->get(Helper\UrlHelper::class));
-        }
-        
-        if ($container->has(Helper\ServerUrlHelper::class)) {
-            $helperManager->registerHelper($container->get(Helper\ServerUrlHelper::class));
-        }
-
-        $talesRegistry = PHPTAL_TalesRegistry::getInstance();
-        if (! $talesRegistry->isRegistered('helper')) {
-            $talesRegistry->registerPrefix('helper', [TalesHelper::class, 'helper']);
-        }
     }
 }
