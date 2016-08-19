@@ -87,7 +87,7 @@ class ModuleOptions extends AbstractOptions
 
     public function setCachePurgeMode($cachePurgeMode)
     {
-        $this->cachePurgeMode = is_bool($cachePurgeMode);
+        $this->cachePurgeMode = filter_var($cachePurgeMode, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
         return $this;
     }
 
@@ -131,7 +131,7 @@ class ModuleOptions extends AbstractOptions
 
     public function setCompressWhitespace($compressWhitespace)
     {
-        $this->compressWhitespace = is_bool($compressWhitespace);
+        $this->compressWhitespace = filter_var($compressWhitespace, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
         return $this;
     }
 
@@ -142,7 +142,7 @@ class ModuleOptions extends AbstractOptions
 
     public function setStripComments($stripComments)
     {
-        $this->stripComments = is_bool($stripComments);
+        $this->stripComments = filter_var($stripComments, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
         return $this;
     }
     
@@ -153,7 +153,7 @@ class ModuleOptions extends AbstractOptions
 
     public function setDebug($debug)
     {
-        $this->debug = is_bool($debug);
+        $this->debug = filter_var($debug, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
         return $this;
     }
 }

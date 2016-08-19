@@ -11,6 +11,8 @@ Install this library using composer:
 $ composer require xorock/zend-phptal
 ```
 
+Then add `ZfPhptal` to Your module config under the `modules` key.
+
 ## Configuration
 
 The following configuration options, specific to PHPTAL, is consumed by Service Factory:
@@ -66,4 +68,22 @@ return [
 
 // inside template
 // ${php: this.test()}
+```
+
+## Examples
+
+Example .html files for the skeleton application can be found in the [examples](https://github.com/xorock/zend-phptal/tree/master/examples)
+folder.
+
+## Backward compatibility with ZTAL
+
+For backward compatibility with [ZTAL Project](https://github.com/namesco/ZTal) renderer registers numerous standard variables.
+
+```php
+$this->engine->set('doctype', $this->plugin('Doctype'));
+$this->engine->set('headTitle', $this->plugin('HeadTitle'));
+$this->engine->set('headScript', $this->plugin('HeadScript'));
+$this->engine->set('headLink', $this->plugin('HeadLink'));
+$this->engine->set('headMeta', $this->plugin('HeadMeta'));
+$this->engine->set('headStyle', $this->plugin('HeadStyle'));
 ```
